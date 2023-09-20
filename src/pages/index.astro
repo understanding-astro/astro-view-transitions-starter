@@ -2,7 +2,7 @@
 import Main from "../layouts/Main.astro";
 import Card from "../components/Card.astro";
 
-const blogPaths = ["/blog/some-blog", "/blog/another-blog"];
+const blogPaths = ["some-blog", "another-blog"];
 ---
 
 <Main>
@@ -12,6 +12,6 @@ const blogPaths = ["/blog/some-blog", "/blog/another-blog"];
   </p>
 
   <section class="flex flex-col gap-10">
-    {blogPaths.map((path) => <Card to={path} />)}
+    {blogPaths.map((path, index) => <Card to={`/blog/${path}`} />)}
   </section>
 </Main>
