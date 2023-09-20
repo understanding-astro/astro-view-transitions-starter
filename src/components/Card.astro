@@ -1,9 +1,10 @@
 ---
 type Props = {
   to: string;
+  mediaTransitionName?: string;
 };
 
-const { to } = Astro.props;
+const { to, mediaTransitionName = "none" } = Astro.props;
 ---
 
 <a
@@ -12,6 +13,7 @@ const { to } = Astro.props;
 >
   <div
     class="bg-white/30 min-w-[135px] min-h-[127px] rounded-lg group-hover:scale-90 group-hover:bg-white/70 transition-all"
+    transition:name={mediaTransitionName}
   >
   </div>
 
