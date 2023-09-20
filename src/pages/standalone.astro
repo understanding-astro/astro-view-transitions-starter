@@ -1,0 +1,29 @@
+---
+import Card from "../components/Card.astro";
+
+const blogPaths = ["/blog/some-blog", "/blog/another-blog"];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body
+    class="p-10 bg-gradient-to-r from-[#19A6D3] via-[#1150CE] to-[#0C07FA] min-h-screen flex justify-center items-center"
+  >
+    <main class="sm:min-w-[60vw] md:min-w-[50vw]">
+      <h1 class="text-2xl text-white/70 font-semibold">Latest</h1>
+      <p class="mb-10 text-sm text-white/50">
+        Get up to speed with our latest offerings
+      </p>
+
+      <section class="flex flex-col gap-10">
+        {blogPaths.map((path) => <Card to={path} />)}
+      </section>
+    </main>
+  </body>
+</html>
