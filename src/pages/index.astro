@@ -1,6 +1,7 @@
 ---
 import Main from "../layouts/Main.astro";
 import Card from "../components/Card.astro";
+import { ReactCounter } from "../components/ReactCounter";
 
 const blogPaths = ["some-blog", "another-blog"];
 ---
@@ -12,6 +13,21 @@ const blogPaths = ["some-blog", "another-blog"];
   </p>
 
   <section class="flex flex-col gap-10">
-    {blogPaths.map((path, index) => <Card to={`/blog/${path}`} />)}
+    {
+      blogPaths.map((path, index) => (
+        <Card
+          to={`/blog/${path}`}
+          mediaTransitionName={`media-image-${path}`}
+          contentTransitionAnimate="slide"
+        >
+          {/** Render counter island */}
+          <ReactCounter
+            client:load
+            transition:persist
+            transition:name={`counter-${path}`}
+          />
+        </Card>
+      ))
+    }
   </section>
 </Main>

@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 import Card from "../components/Card.astro";
 
 const blogPaths = ["/blog/some-blog", "/blog/another-blog"];
@@ -11,6 +13,8 @@ const blogPaths = ["/blog/some-blog", "/blog/another-blog"];
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
+
+    <ViewTransitions />
   </head>
   <body
     class="p-10 bg-gradient-to-r from-[#19A6D3] via-[#1150CE] to-[#0C07FA] min-h-screen flex justify-center items-center"

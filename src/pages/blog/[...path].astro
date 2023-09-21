@@ -1,18 +1,47 @@
 ---
 export const prerender = false;
 
+import { ReactCounter } from "../../components/ReactCounter";
 import Main from "../../layouts/Main.astro";
 
 const { path } = Astro.params;
+
+const bounceAnimation = {
+  old: {
+    name: "bounce", // same name as the keyframe in layouts/Main
+    duration: "0.7s",
+    easing: "linear",
+    fillMode: "forwards",
+  },
+  new: {
+    name: "bounce",
+    duration: "0.7s",
+    easing: "linear",
+    fillMode: "backwards",
+  },
+};
+
+const bounce = {
+  forwards: bounceAnimation,
+  backwards: bounceAnimation,
+};
 ---
 
 <Main>
-  <div class="bg-white/80 min-w-[100%] h-[40vh] rounded-lg transition-all">
+  <div
+    class="bg-white/80 min-w-[100%] h-[40vh] rounded-lg transition-all"
+    transition:name=`media-image-${path}`
+  >
+    <ReactCounter
+      client:load
+      transition:persist
+      transition:name={`counter-${path}`}
+    />
   </div>
 
   <h1 class="font-semibold text-3xl text-white mt-3 opacity-70">{path}</h1>
 
-  <article class="flex gap-3 flex-col mt-10">
+  <article class="flex gap-3 flex-col mt-10" transition:animate={bounce}>
     <div class="h-3 w-full bg-white/20 group-hover:bg-white/40 rounded-md">
     </div>
     <div class="h-3 w-full bg-white/20 group-hover:bg-white/40 rounded-md">
