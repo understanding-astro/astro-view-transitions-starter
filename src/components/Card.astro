@@ -1,10 +1,17 @@
 ---
+import type { TransitionAnimationValue } from "astro";
+
 type Props = {
   to: string;
   mediaTransitionName?: string;
+  mediaTransitionAnimate?: TransitionAnimationValue;
 };
 
-const { to, mediaTransitionName = "none" } = Astro.props;
+const {
+  to,
+  mediaTransitionName = "none",
+  mediaTransitionAnimate = "fade",
+} = Astro.props;
 ---
 
 <a
@@ -14,6 +21,7 @@ const { to, mediaTransitionName = "none" } = Astro.props;
   <div
     class="bg-white/30 min-w-[135px] min-h-[127px] rounded-lg group-hover:scale-90 group-hover:bg-white/70 transition-all"
     transition:name={mediaTransitionName}
+    transition:animate={mediaTransitionAnimate}
   >
   </div>
 
